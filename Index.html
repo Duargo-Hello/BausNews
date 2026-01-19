@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 Baú de Doramas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🎬 Baú de Doramas</h1>
+
+  <div class="filtros">
+    <input id="buscaTexto" placeholder="🔍 Buscar">
+
+    <select id="filtroCategoria">
+      <option value="">📂 Categoria</option>
+      <option>Romance</option>
+      <option>Drama</option>
+      <option>Fantasia</option>
+      <option>Ação</option>
+      <option>Comédia</option>
+    </select>
+
+    <select id="ordenarPor">
+      <option value="">📊 Ordenar</option>
+      <option value="titulo">Título</option>
+      <option value="ano">Ano</option>
+    </select>
+
+    <button id="btnFavoritos">❤️ Favoritos</button>
+    <button onclick="abrirCadastro()">➕ Novo</button>
+  </div>
+
+  <div id="listaDoramas"></div>
+</div>
+
+<!-- MODAL CADASTRO -->
+<div id="modalCadastro" class="modal">
+  <div class="modal-conteudo">
+    <span class="fechar" onclick="fecharModal()">❎</span>
+    <h3 id="tituloModal">Novo Dorama</h3>
+
+    <input id="tituloInput" placeholder="Título">
+    <input id="anoInput" type="number" placeholder="Ano">
+    <input id="temporadasInput" type="number" placeholder="Temporadas">
+
+    <select id="tipoQtdInput">
+      <option>Episódios</option>
+      <option>Capítulos</option>
+    </select>
+
+    <input id="qtdInput" type="number" placeholder="Quantidade">
+
+    <select id="statusInput">
+      <option value="Planejo assistir">📌 Planejo assistir</option>
+      <option value="Assistindo">▶️ Assistindo</option>
+      <option value="Pausado">⏸️ Pausado</option>
+      <option value="Completo">✅ Completo</option>
+    </select>
+
+    <input id="imagemUrlInput" placeholder="URL da imagem">
+    <input id="imagemFileInput" type="file" accept="image/*">
+    <input id="linkInput" placeholder="Link para assistir">
+    <input id="trailerInput" placeholder="Link do trailer">
+
+    <select id="categoriaInput">
+      <option>Romance</option>
+      <option>Drama</option>
+      <option>Fantasia</option>
+      <option>Ação</option>
+      <option>Comédia</option>
+    </select>
+
+    <textarea id="descricaoInput" placeholder="Descrição"></textarea>
+
+    <button onclick="salvarDorama()">💾 Salvar</button>
+    <button onclick="fecharModal()">❌ Cancelar</button>
+  </div>
+</div>
+
+<!-- MODAL DETALHES -->
+<div id="modalDetalhes" class="modal">
+  <div class="modal-detalhes">
+    <span class="fechar" onclick="fecharDetalhes()">❎</span>
+    <img id="detalheImagem">
+    <div class="detalhe-info">
+      <h2 id="detalheTitulo"></h2>
+      <p id="detalheMeta"></p>
+      <p id="detalheDescricao"></p>
+
+      <div class="estrelas" id="avaliacaoEstrelas"></div>
+
+      <a id="detalheLink" target="_blank">
+        <button>▶ Assistir</button>
+      </a>
+
+      <button onclick="abrirTrailer()">🎬 Trailer</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TRAILER -->
+<div id="modalTrailer" class="modal">
+  <div class="modal-detalhes">
+    <span class="fechar" onclick="fecharTrailer()">❎</span>
+    <iframe id="iframeTrailer" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- JS externo -->
+<script src="script.js"></script>
+</body>
+</html>
