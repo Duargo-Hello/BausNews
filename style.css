@@ -75,9 +75,10 @@ button:hover{
 
 .dorama-card img{
   width:100%;
-  height:260px;
-  object-fit:cover;
+  aspect-ratio:2/3;
+  object-fit:contain;
   border-radius:12px;
+  background:#000;
 }
 
 .info{
@@ -93,11 +94,26 @@ button:hover{
 
 .favorito{
   position:absolute;
-  top:10px;
-  right:10px;
-  background:none;
+  top:8px;
+  right:8px;
+  background:rgba(0,0,0,.6);
   border:none;
-  font-size:22px;
+  font-size:20px;
+  padding:4px 6px;
+  border-radius:50%;
+  line-height:1;
+}
+
+.favorito{
+  position:absolute;
+  top:8px;
+  right:8px;
+  background:rgba(0,0,0,.6);
+  border:none;
+  font-size:20px;
+  padding:4px 6px;
+  border-radius:50%;
+  line-height:1;
 }
 
 .modal{
@@ -108,14 +124,6 @@ button:hover{
   justify-content:center;
   align-items:center;
   z-index:100;
-}
-
-.fechar{
-  position:absolute;
-  top:10px;
-  right:14px;
-  font-size:22px;
-  cursor:pointer;
 }
 
 .modal-conteudo{
@@ -133,9 +141,12 @@ button:hover{
   background:#111;
   max-width:850px;
   width:92%;
+  max-height:90vh;
   border-radius:18px;
-  overflow:hidden;
   position:relative;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
 }
 
 .modal-detalhes img{
@@ -150,10 +161,20 @@ button:hover{
   display:flex;
   flex-direction:column;
   gap:12px;
+  overflow-y:auto;
+  flex:1;
 }
 
 .detalhe-info h2{
   color:var(--gold);
+}
+
+#detalheDescricao{
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6;
+  max-width: 100%;
 }
 
 .estrelas{
@@ -164,7 +185,6 @@ button:hover{
 
 .estrela{
   font-size:22px;
-  color:#fff;
 }
 
 .estrela.ativa{
@@ -177,15 +197,109 @@ button:hover{
 
 .estrela-cheia{
   color:var(--gold);
-  text-shadow:0 0 6px rgba(255,204,0,.6);
 }
 
 .estrela-vazia{
   color:#555;
 }
 
-iframe{
-  width:100%;
-  height:450px;
-  border:none;
+.status{
+  padding:4px 8px;
+  border-radius:6px;
+  font-size:12px;
 }
+
+.status.Planejo\ assistir{background:#444;}
+.status.Assistindo{background:#1e90ff;}
+.status.Pausado{background:#ff9800;}
+.status.Completo{background:#2ecc71;}
+
+.fechar{
+  position:absolute;
+  top:14px;
+  right:18px;
+  font-size:28px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.fechar:hover{
+  color:var(--gold);
+  transform:rotate(90deg);
+}
+
+/* ======================================
+   RESPONSIVIDADE MOBILE – SEM MEXER NO JS
+====================================== */
+@media (max-width:600px){
+
+  .modal{
+    align-items:flex-start;
+    overflow-y:auto;
+    padding:10px;
+  }
+
+  .modal-conteudo,
+  .modal-detalhes{
+    width:100%;
+    max-width:100%;
+    max-height:95vh;
+    margin-top:20px;
+  }
+
+  .modal-detalhes img{
+    max-height:240px;
+  }
+
+  .modal-conteudo input,
+  .modal-conteudo textarea,
+  .modal-conteudo select,
+  .modal-conteudo button,
+  .detalhe-info button{
+    width:100%;
+  }
+
+  #iframeTrailer{
+    width:100%;
+    aspect-ratio:16/9;
+    height:auto;
+  }
+
+  .fechar{
+    position:sticky;
+    top:10px;
+    z-index:20;
+  }
+}
+@media (max-width:600px){
+  body{
+    overflow:hidden;
+  }
+
+  .modal{
+    overscroll-behavior:contain;
+  }
+
+  .modal-detalhes{
+    border-radius:16px 16px 0 0;
+  }
+}
+
+.descricao-curta{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;   /* duas linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn-ler-mais{
+  background:none;
+  border:none;
+  color:var(--gold);
+  cursor:pointer;
+  padding:0;
+  font-size:14px;
+  align-self:flex-start;
+}
+
