@@ -273,9 +273,6 @@ button:hover{
   }
 }
 @media (max-width:600px){
-  body{
-    overflow:hidden;
-  }
 
   .modal{
     overscroll-behavior:contain;
