@@ -274,6 +274,10 @@ button:hover{
 }
 @media (max-width:600px){
 
+  body.modal-aberto {
+    overflow-x:hidden;
+  }
+
   .modal{
     overscroll-behavior:contain;
   }
